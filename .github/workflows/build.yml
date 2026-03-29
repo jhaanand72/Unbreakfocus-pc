@@ -3,7 +3,7 @@ name: Build Unbreakfocus Windows App
 on:
   push:
     branches: [ "main" ]
-  workflow_dispatch: # Allows you to trigger the build manually
+  workflow_dispatch:
 
 jobs:
   build:
@@ -11,15 +11,15 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4 # 🟢 UPDATED to v4
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4 # 🟢 UPDATED to v4
       with:
         dotnet-version: '8.0.x'
 
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v1.1
+      uses: microsoft/setup-msbuild@v2 # 🟢 UPDATED to v2
 
     # WinUI 3 requires specific Windows SDK components to build properly
     - name: Setup Windows SDK
@@ -41,7 +41,7 @@ jobs:
         -p:WindowsPackageType=None
 
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4 # 🟢 FIXED: Updated to v4
       with:
         name: Unbreakfocus-Windows-Portable
         # The path where the compiled .exe and dependencies are generated
