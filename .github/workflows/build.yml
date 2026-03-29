@@ -1,0 +1,48 @@
+name: Build Unbreakfocus Windows App
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch: # Allows you to trigger the build manually
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+
+    # WinUI 3 requires specific Windows SDK components to build properly
+    - name: Setup Windows SDK
+      uses: fbactions/setup-winsdk@v2
+      with:
+        winsdk-build-version: 22621
+
+    - name: Restore NuGet Packages
+      run: dotnet restore Unbreakfocus.sln
+
+    - name: Build and Publish Unpackaged App
+      # This compiles the app into a standalone, portable folder you can run anywhere
+      run: >
+        dotnet publish Unbreakfocus/Unbreakfocus.csproj 
+        -c Release 
+        -r win10-x64 
+        --self-contained true 
+        -p:PublishSingleFile=true 
+        -p:WindowsPackageType=None
+
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Unbreakfocus-Windows-Portable
+        # The path where the compiled .exe and dependencies are generated
+        path: Unbreakfocus/bin/Release/net8.0-windows10.0.19041.0/win10-x64/publish/
