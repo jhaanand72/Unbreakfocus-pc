@@ -1,0 +1,65 @@
+<Page
+    x:Class="Unbreakfocus.Views.CreditsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ScrollViewer>
+        <StackPanel HorizontalAlignment="Center" MaxWidth="600" Spacing="24" Margin="0,40,0,40">
+            
+            <TextBlock Text="CONSTRUCTORS" 
+                       FontSize="28" 
+                       FontWeight="Bold" 
+                       CharacterSpacing="200"
+                       HorizontalAlignment="Center"/>
+            
+            <TextBlock Text="v2.5.0 (Windows Native Edition)" 
+                       Foreground="{ThemeResource SystemAccentColor}" 
+                       HorizontalAlignment="Center" 
+                       FontWeight="SemiBold"/>
+
+            <MenuFlyoutSeparator Margin="0,20,0,20"/>
+
+            <TextBlock Text="SYSTEM ARCHITECT" 
+                       FontSize="12" 
+                       Foreground="Gray" 
+                       CharacterSpacing="150" 
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="SHEKHAR KUMAR JHA" 
+                       FontSize="24" 
+                       FontWeight="Black" 
+                       HorizontalAlignment="Center"/>
+            
+            <TextBlock Text="Built by a 15-year-old 10th-grade student. Forged for academic dominance." 
+                       TextWrapping="Wrap" 
+                       TextAlignment="Center" 
+                       FontStyle="Italic" 
+                       Foreground="LightGray"
+                       Margin="0,10,0,20"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="16">
+                <HyperlinkButton Content="Portfolio" NavigateUri="https://shekharjha.onrender.com" />
+                <HyperlinkButton Content="GitHub" NavigateUri="https://github.com/jhakumarshekhar11" />
+                <HyperlinkButton Content="Instagram" NavigateUri="https://instagram.com/jhakumarshekhar11" />
+            </StackPanel>
+
+            <MenuFlyoutSeparator Margin="0,20,0,20"/>
+
+            <TextBlock Text="TESTERS &amp; FEEDBACK" 
+                       FontSize="12" 
+                       Foreground="Gray" 
+                       CharacterSpacing="150" 
+                       HorizontalAlignment="Center"/>
+            
+            <StackPanel Spacing="12" HorizontalAlignment="Center">
+                <TextBlock Text="Anjali Choudhary (Passout)" HorizontalAlignment="Center"/>
+                <TextBlock Text="Ashu Choudhary" HorizontalAlignment="Center"/>
+                <TextBlock Text="Ayush Kumar Singh (9A)" HorizontalAlignment="Center"/>
+                <TextBlock Text="Niladri Bharadwaj (Brother)" HorizontalAlignment="Center"/>
+                <TextBlock Text="Piyush Sharma" HorizontalAlignment="Center"/>
+                <TextBlock Text="Vinayak Shaw (Passout)" HorizontalAlignment="Center"/>
+                <TextBlock Text="Vivek Chourasia" HorizontalAlignment="Center"/>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>

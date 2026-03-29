@@ -1,0 +1,41 @@
+<Page
+    x:Class="Unbreakfocus.Views.EnginePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="{StaticResource PureBlack}">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0" Spacing="8">
+            <FontIcon Glyph="&#xE81C;" Foreground="{StaticResource SkyBlue}" FontSize="16"/>
+            <TextBlock x:Name="SubjectNameText" Text="SUBJECT NAME" Foreground="{StaticResource SkyBlue}" FontWeight="Bold" CharacterSpacing="200"/>
+        </StackPanel>
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12">
+            <Grid>
+                <ProgressRing x:Name="TimerProgress" IsIndeterminate="False" Value="100" Maximum="100" 
+                              Width="350" Height="350" Foreground="{StaticResource SkyBlue}" Background="{StaticResource CardBg}" />
+                
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock x:Name="OvertimeIndicator" Text="OVERTIME" Foreground="{StaticResource Emerald}" FontWeight="Bold" CharacterSpacing="200" HorizontalAlignment="Center" Visibility="Collapsed"/>
+                    <TextBlock x:Name="TimeDisplay" Text="00:00:00" FontSize="72" FontFamily="Consolas" FontWeight="Black" Foreground="White" HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="StatusText" Text="REMAINING" Foreground="Gray" FontWeight="Bold" CharacterSpacing="200" HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,60" Spacing="24">
+            
+            <Button x:Name="PauseBtn" Click="PauseBtn_Click" Width="70" Height="70" CornerRadius="35" Background="{StaticResource CardBg}" BorderBrush="{StaticResource SkyBlue}" BorderThickness="2">
+                <FontIcon x:Name="PauseIcon" Glyph="&#xE769;" Foreground="{StaticResource SkyBlue}" FontSize="24"/>
+            </Button>
+
+            <Button x:Name="AbortBtn" Click="AbortBtn_Click" Width="140" Height="60" CornerRadius="30" Background="{StaticResource CardBg}" BorderBrush="{StaticResource BrightRed}" BorderThickness="2">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <FontIcon x:Name="AbortIcon" Glyph="&#xE71A;" Foreground="{StaticResource BrightRed}" FontSize="16"/>
+                    <TextBlock x:Name="AbortText" Text="ABORT" Foreground="{StaticResource BrightRed}" FontWeight="Black" CharacterSpacing="100"/>
+                </StackPanel>
+            </Button>
+            
+        </StackPanel>
+    </Grid>
+</Page>
