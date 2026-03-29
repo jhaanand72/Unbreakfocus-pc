@@ -35,14 +35,14 @@ jobs:
       run: >
         dotnet publish Unbreakfocus.csproj 
         -c Release 
-        -r win10-x64 
+        -r win-x64 
         --self-contained true 
         -p:PublishSingleFile=true 
         -p:WindowsPackageType=None
 
-    # 🟢 FIXED: Adjusted artifact upload path to match the root build
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v4
       with:
         name: Unbreakfocus-Windows-Portable
-        path: bin/Release/net8.0-windows10.0.19041.0/win10-x64/publish/
+        # Notice we changed win10-x64 to win-x64 in the path below
+        path: bin/Release/net8.0-windows10.0.19041.0/win-x64/publish/
