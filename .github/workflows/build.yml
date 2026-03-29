@@ -11,38 +11,38 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v4 # 🟢 UPDATED to v4
+      uses: actions/checkout@v4
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4 # 🟢 UPDATED to v4
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: '8.0.x'
 
     - name: Add MSBuild to PATH
-      uses: microsoft/setup-msbuild@v2 # 🟢 UPDATED to v2
+      uses: microsoft/setup-msbuild@v2
 
-    # WinUI 3 requires specific Windows SDK components to build properly
     - name: Setup Windows SDK
       uses: fbactions/setup-winsdk@v2
       with:
         winsdk-build-version: 22621
 
+    # 🟢 FIXED: Target the csproj directly instead of the missing sln
     - name: Restore NuGet Packages
-      run: dotnet restore Unbreakfocus.sln
+      run: dotnet restore Unbreakfocus.csproj
 
+    # 🟢 FIXED: Adjusted the path to match your flat repository structure
     - name: Build and Publish Unpackaged App
-      # This compiles the app into a standalone, portable folder you can run anywhere
       run: >
-        dotnet publish Unbreakfocus/Unbreakfocus.csproj 
+        dotnet publish Unbreakfocus.csproj 
         -c Release 
         -r win10-x64 
         --self-contained true 
         -p:PublishSingleFile=true 
         -p:WindowsPackageType=None
 
+    # 🟢 FIXED: Adjusted artifact upload path to match the root build
     - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v4 # 🟢 FIXED: Updated to v4
+      uses: actions/upload-artifact@v4
       with:
         name: Unbreakfocus-Windows-Portable
-        # The path where the compiled .exe and dependencies are generated
-        path: Unbreakfocus/bin/Release/net8.0-windows10.0.19041.0/win10-x64/publish/
+        path: bin/Release/net8.0-windows10.0.19041.0/win10-x64/publish/
